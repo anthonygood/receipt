@@ -1,7 +1,7 @@
-require_relative 'line_parser'
+require_relative 'line'
 
-describe LineParser do
-  subject { LineParser.new("1 book at 12.49") }
+describe Parse::Line do
+  subject { Parse::Line.new("1 book at 12.49") }
 
   it "parses the quantity" do
     expect(subject.quantity).to eq(1)
@@ -21,5 +21,9 @@ describe LineParser do
 
   it "parses the category" do
     expect(subject.category).to eq("book")
+  end
+
+  it "parses whether tax exempt" do
+    expect(subject.tax_exempt).to eq(true)
   end
 end
