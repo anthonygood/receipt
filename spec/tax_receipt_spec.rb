@@ -1,4 +1,5 @@
-require_relative 'tax_receipt'
+require 'spec_helper'
+require 'tax_receipt'
 
 describe TaxReceipt do
   inputs = [
@@ -17,6 +18,7 @@ describe TaxReceipt do
     it "returns the expected output for input_#{i + 1}" do
       tr = TaxReceipt.new(input)
       expected_output = expected_outputs[i]
+
       expect(tr.receipt).to eq(expected_output)
     end
   end

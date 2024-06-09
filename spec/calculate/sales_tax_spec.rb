@@ -1,4 +1,4 @@
-require_relative 'sales_tax'
+require 'calculate/sales_tax'
 
 describe Calculate::SalesTax do
   subject { Calculate::SalesTax }

@@ -1,4 +1,4 @@
-require_relative 'line'
+require 'parse/line'
 
 describe Parse::Line do
   subject { Parse::Line.new("1 book at 12.49") }
@@ -20,7 +20,7 @@ describe Parse::Line do
     expect(Parse::Line.new(example_three).amount).to eq(1125)
   end
 
-  xit "parses the description" do
+  it "parses the description" do
     expect(subject.description).to eq("book")
 
     expect(Parse::Line.new(example_two).description).to eq("bottle of perfume")
