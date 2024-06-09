@@ -34,6 +34,8 @@ module Parse
       @@categories.each do |category|
         return category.name if category.match?(description)
       end
+
+      nil
     end
 
     def tax_exempt
