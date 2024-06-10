@@ -24,7 +24,7 @@ describe Parse::Line do
     expect(subject.description).to eq("book")
 
     expect(Parse::Line.new(example_two).description).to eq("bottle of perfume")
-    expect(Parse::Line.new(example_three).description).to eq("boxes of chocolates")
+    expect(Parse::Line.new(example_three).description).to eq("imported boxes of chocolates")
   end
 
   it "parses the imported flag" do
@@ -42,9 +42,9 @@ describe Parse::Line do
   end
 
   it "parses whether tax exempt" do
-    expect(subject.tax_exempt).to eq(true)
+    expect(subject.tax_exempt?).to eq(true)
 
-    expect(Parse::Line.new(example_two).tax_exempt).to eq(false)
-    expect(Parse::Line.new(example_three).tax_exempt).to eq(true)
+    expect(Parse::Line.new(example_two).tax_exempt?).to eq(false)
+    expect(Parse::Line.new(example_three).tax_exempt?).to eq(true)
   end
 end

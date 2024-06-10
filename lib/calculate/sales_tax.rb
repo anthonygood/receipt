@@ -2,11 +2,14 @@ require 'bigdecimal'
 
 module Calculate
   class SalesTax
-    @@tax_rate_percentage = 10
+    @tax_rate_percentage = 10
     
     class << self
+      attr_reader :tax_rate_percentage
+
       def calculate(price)
-        round_up @@tax_rate_percentage * price / 100
+        total = (tax_rate_percentage * price) / 100
+        round_up total
       end
 
       # "The rounding rules for sales tax are that for a tax rate of n%,

@@ -38,7 +38,7 @@ module Parse
       nil
     end
 
-    def tax_exempt
+    def tax_exempt?
       !!category
     end
   end

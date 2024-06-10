@@ -25,8 +25,10 @@ describe Calculate::SalesTax do
     end
   end
 
-  it "calculates the sales tax, rounded up to the nearest 5 pennies" do
-    expect(subject.calculate(1499)).to eq(150)
-    expect(subject.calculate(1899)).to eq(190)
+  describe "calculate" do
+    it "calculates the sales tax, rounded up to the nearest 5 pennies" do
+      expect(subject.calculate(1499)).to eq(150)
+      expect(subject.calculate(1899)).to eq(190)
+    end
   end
 end
