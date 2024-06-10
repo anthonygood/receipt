@@ -12,14 +12,14 @@ module TaxReceipt
     def data
       @data ||= input
         .split("\n")
-        .map { |line| Parse::Line.new(line) }
-        .map { |parsed_line| LineItem.new(parsed_line) }
+        .map { |line| Parse::Line.new line }
+        .map { |parsed_line| LineItem.new parsed_line }
     end
 
     def receipt      
       sum_total = data.map(&:total).sum
       total_tax = data.map(&:total_tax).sum
-      line_items = data.map { |line| format_line(line) }.join("\n")
+      line_items = data.map(&method(:format_line)).join "\n"
 
       "#{line_items}\nSales Taxes: #{format_currency total_tax}\nTotal: #{format_currency sum_total}"
     end
@@ -29,7 +29,7 @@ module TaxReceipt
     end
 
     def format_currency(number)
-      sprintf("%.2f", number / 100.0)
+      sprintf "%.2f", number / 100.0
     end
   end
 end
