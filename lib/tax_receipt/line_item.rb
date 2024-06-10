@@ -6,16 +6,16 @@ require 'calculate/import_duty'
 module TaxReceipt
   class LineItem
     extend Forwardable
-    attr_reader :parsed_line
+    attr_reader :parsed_input
 
-    def_delegators :@parsed_line, :tax_exempt?, :quantity, :price, :description
+    def_delegators :@parsed_input, :tax_exempt?, :quantity, :price, :description
 
-    def initialize(parsed_line)
-      @parsed_line = parsed_line
+    def initialize(parsed_input)
+      @parsed_input = parsed_input
     end
 
     def total
-      parsed_line.quantity * (parsed_line.price + sales_tax.to_i + import_duty.to_i)
+      parsed_input.quantity * (parsed_input.price + sales_tax.to_i + import_duty.to_i)
     end
 
     def total_tax
@@ -25,16 +25,16 @@ module TaxReceipt
     private
 
     def sales_tax
-      if parsed_line.tax_exempt?
+      if parsed_input.tax_exempt?
         0
       else
-        Calculate::SalesTax.calculate(parsed_line.price)
+        Calculate::SalesTax.calculate(parsed_input.price)
       end
     end
 
     def import_duty
-      if parsed_line.imported
-        Calculate::ImportDuty.calculate(parsed_line.price)
+      if parsed_input.imported
+        Calculate::ImportDuty.calculate(parsed_input.price)
       else
         0
       end
