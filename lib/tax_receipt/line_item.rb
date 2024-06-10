@@ -18,12 +18,26 @@ module TaxReceipt
       parsed_line.quantity * (parsed_line.price + sales_tax.to_i + import_duty.to_i)
     end
 
+    def total_tax
+      quantity * (sales_tax.to_i + import_duty.to_i)
+    end
+
+    private
+
     def sales_tax
-      Calculate::SalesTax.calculate(parsed_line.price) unless parsed_line.tax_exempt?
+      if parsed_line.tax_exempt?
+        0
+      else
+        Calculate::SalesTax.calculate(parsed_line.price)
+      end
     end
 
     def import_duty
-      Calculate::ImportDuty.calculate(parsed_line.price) if parsed_line.imported
+      if parsed_line.imported
+        Calculate::ImportDuty.calculate(parsed_line.price)
+      else
+        0
+      end
     end
   end
 end
