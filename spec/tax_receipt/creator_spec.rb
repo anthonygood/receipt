@@ -16,10 +16,14 @@ describe TaxReceipt::Creator do
 
   inputs.each_with_index do |input, i|
     it "returns the expected output for input_#{i + 1}" do
-      tr = TaxReceipt::Creator.new(input)
+      tr = TaxReceipt::Creator.create(input)
       expected_output = expected_outputs[i]
 
-      expect(tr.receipt).to eq(expected_output)
+      expect(tr).to eq(expected_output)
     end
+  end
+
+  it "throws a helpful error message when no input is provided" do
+    expect { TaxReceipt::Creator.create("") }.to raise_error("No input provided")
   end
 end

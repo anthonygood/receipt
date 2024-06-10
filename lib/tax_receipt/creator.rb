@@ -5,7 +5,16 @@ module TaxReceipt
   class Creator
     attr_reader :input
 
+    class << self
+      def create(txt)
+        new(txt).receipt
+      end
+    end
+
     def initialize(txt)
+      raise "No input provided" if txt.empty?
+
+      # TODO: Validate input
       @input = txt
     end
 
@@ -29,7 +38,7 @@ module TaxReceipt
     end
 
     def format_currency(number)
-      sprintf "%.2f", number / 100.0
+      format "%.2f", number / 100.0
     end
   end
 end
