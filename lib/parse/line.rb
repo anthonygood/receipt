@@ -18,7 +18,7 @@ module Parse
       input.match(/^\d+/).to_s.to_i
     end
 
-    def amount
+    def price
       input.match(/\d+\.\d{2}$/).to_s.gsub(".", "").to_i
     end
 

@@ -13,11 +13,11 @@ describe Parse::Line do
     expect(Parse::Line.new(example_three).quantity).to eq(3)
   end
 
-  it "parses the amount in pennies" do
-    expect(subject.amount).to eq(1249)
+  it "parses the price in pennies" do
+    expect(subject.price).to eq(1249)
 
-    expect(Parse::Line.new(example_two).amount).to eq(1899)
-    expect(Parse::Line.new(example_three).amount).to eq(1125)
+    expect(Parse::Line.new(example_two).price).to eq(1899)
+    expect(Parse::Line.new(example_three).price).to eq(1125)
   end
 
   it "parses the description" do

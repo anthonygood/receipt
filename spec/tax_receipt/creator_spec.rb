@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'tax_receipt'
+require 'tax_receipt/creator'
 
-describe TaxReceipt do
+describe TaxReceipt::Creator do
   inputs = [
     File.read("spec/fixtures/input_1.txt"),
     File.read("spec/fixtures/input_2.txt"),
@@ -16,7 +16,7 @@ describe TaxReceipt do
 
   inputs.each_with_index do |input, i|
     it "returns the expected output for input_#{i + 1}" do
-      tr = TaxReceipt.new(input)
+      tr = TaxReceipt::Creator.new(input)
       expected_output = expected_outputs[i]
 
       expect(tr.receipt).to eq(expected_output)
