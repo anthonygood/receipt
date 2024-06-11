@@ -1,3 +1,10 @@
+# Download
+
+You'll need to clone the repo in order to run the app and tests:
+```
+git clone git@github.com:anthonygood/receipt.git
+```
+
 ## Run the tests
 ```sh
 bundle install --binstubs --path vendor/bundle
