@@ -1,11 +1,11 @@
 ## Run the tests
 ```sh
-bundle install --binstubs
+bundle install --binstubs --path vendor/bundle
 bin/rspec --format=documentation
 ```
 
 ## Run the app
-Execute `lib/tax_receipt.rb` passing a filepath to your input, or the input itself:
+Run `exe/receipt` passing a filepath to your input, or the input itself:
 ```sh
 # With a filepath
 exe/receipt spec/fixtures/input_1.txt
@@ -14,6 +14,8 @@ exe/receipt spec/fixtures/input_1.txt
 exe/receipt "1 imported box of chocolates at 10.00                 
 1 imported bottle of perfume at 47.50"
 ```
+(`exe/receipt` should have the correct file permissions but `chmod +x exe/receipt` it if not!)
+
 There's no validation on the input, so you can get some mangled output by eg. passing the example output as input, or a non-existent filepath.
 
 ## Assumptions
