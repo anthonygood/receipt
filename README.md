@@ -1,12 +1,12 @@
 ## Run the tests
-```
+```sh
 bundle install --binstubs
 bin/rspec --format=documentation
 ```
 
 ## Run the app
 Execute `lib/tax_receipt.rb` passing a filepath to your input, or the input itself:
-```
+```sh
 # With a filepath
 exe/receipt spec/fixtures/input_1.txt
 
