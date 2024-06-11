@@ -1,4 +1,8 @@
-require 'tax_receipt/creator'
+#!/usr/bin/env ruby
+RUBY_LIB = File.expand_path File.join(File.dirname(__FILE__), '..', 'lib')
+$LOAD_PATH.unshift(RUBY_LIB) unless $LOAD_PATH.include?(RUBY_LIB)
+
+require_relative '../lib/tax_receipt/creator'
 
 path_or_input = ARGV[0]
 
