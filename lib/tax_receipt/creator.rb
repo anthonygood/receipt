@@ -1,7 +1,7 @@
 require 'parse/line'
 require 'tax_receipt/line_item'
 
-# Upon reflect, "SalesReceipt" might be a better name for this module
+# Upon reflection, "SalesReceipt" might be a better name for this module
 module TaxReceipt
   class Creator
     attr_reader :input
