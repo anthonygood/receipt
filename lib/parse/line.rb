@@ -11,7 +11,7 @@ module Parse
     ]
 
     def initialize(input)
-      @input = input
+      @input = input.strip
     end
 
     def quantity
